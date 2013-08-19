@@ -150,7 +150,7 @@
 - (void)testIndexOfCharacterAtPosition
 {
     CGPoint p = CGPointMake(20, 0);
-    NSUInteger index = [_line indexOfCharacterAtPosition:p];
+    NSUInteger index = [_line characterIndexAtPoint:p];
     XCTAssertTrue(index == 4);
 }
 

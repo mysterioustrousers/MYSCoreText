@@ -6,12 +6,18 @@
 //  Copyright (c) 2013 Mysterious Trousers. All rights reserved.
 //
 
-@class MYSLine;
 
+@class MYSFramesetter;
+@class MYSLine;
 
 
 @interface MYSTypesetter : NSObject
 
+
+/**
+ *	The framesetter that created this typsetter, if there is one.
+ */
+@property (nonatomic, assign, readonly) MYSFramesetter *framesetter;
 
 /**
  *  The attributed string used to create the typesetter.

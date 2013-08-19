@@ -24,6 +24,7 @@
 		C236BE5417B1EECF004639B8 /* MYSTypesetterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C236BE5317B1EECF004639B8 /* MYSTypesetterTests.m */; };
 		C258844017AC5E19005A6499 /* MYSGlyph.h in Headers */ = {isa = PBXBuildFile; fileRef = C258843E17AC5E19005A6499 /* MYSGlyph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C258844117AC5E19005A6499 /* MYSGlyph.m in Sources */ = {isa = PBXBuildFile; fileRef = C258843F17AC5E19005A6499 /* MYSGlyph.m */; };
+		C26B358F17BC80B00031C32D /* MYSPrivateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C26B358E17BC80B00031C32D /* MYSPrivateTests.m */; };
 		C26D560817B5A1F20007414D /* MYSFrameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C26D560717B5A1F20007414D /* MYSFrameTests.m */; };
 		C26D560A17B5AAA30007414D /* MYSLineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C26D560917B5AAA30007414D /* MYSLineTests.m */; };
 		C26D560C17B5B4030007414D /* MYSPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = C26D560B17B5B4030007414D /* MYSPrivate.h */; };
@@ -37,6 +38,11 @@
 		C2ED0FA617AB580B00D93D0A /* MYSTypesetter.h in Headers */ = {isa = PBXBuildFile; fileRef = C2ED0FA417AB580B00D93D0A /* MYSTypesetter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2ED0FA717AB580B00D93D0A /* MYSTypesetter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ED0FA517AB580B00D93D0A /* MYSTypesetter.m */; };
 		C2F06E3317B33C9900D9AA9D /* MYSLine_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F06E3217B33C9900D9AA9D /* MYSLine_Private.h */; };
+		C2F3E3D117BF666000542F53 /* MYSParagraph.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F3E3CF17BF666000542F53 /* MYSParagraph.h */; };
+		C2F3E3D217BF666000542F53 /* MYSParagraph.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F3E3D017BF666000542F53 /* MYSParagraph.m */; };
+		C2F3E3D417BF668C00542F53 /* MYSParagraph_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F3E3D317BF668C00542F53 /* MYSParagraph_Private.h */; };
+		C2F3E3D717BF66A200542F53 /* MYSWord.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F3E3D517BF66A200542F53 /* MYSWord.h */; };
+		C2F3E3D817BF66A200542F53 /* MYSWord.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F3E3D617BF66A200542F53 /* MYSWord.m */; };
 		C2FA550B17B6B50700ADB392 /* MYSRunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FA550A17B6B50700ADB392 /* MYSRunTests.m */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +79,7 @@
 		C236BE5317B1EECF004639B8 /* MYSTypesetterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSTypesetterTests.m; sourceTree = "<group>"; };
 		C258843E17AC5E19005A6499 /* MYSGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYSGlyph.h; sourceTree = "<group>"; };
 		C258843F17AC5E19005A6499 /* MYSGlyph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSGlyph.m; sourceTree = "<group>"; };
+		C26B358E17BC80B00031C32D /* MYSPrivateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSPrivateTests.m; sourceTree = "<group>"; };
 		C26D560717B5A1F20007414D /* MYSFrameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSFrameTests.m; sourceTree = "<group>"; };
 		C26D560917B5AAA30007414D /* MYSLineTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSLineTests.m; sourceTree = "<group>"; };
 		C26D560B17B5B4030007414D /* MYSPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYSPrivate.h; sourceTree = "<group>"; };
@@ -86,6 +93,12 @@
 		C2ED0FA417AB580B00D93D0A /* MYSTypesetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYSTypesetter.h; sourceTree = "<group>"; };
 		C2ED0FA517AB580B00D93D0A /* MYSTypesetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSTypesetter.m; sourceTree = "<group>"; };
 		C2F06E3217B33C9900D9AA9D /* MYSLine_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYSLine_Private.h; sourceTree = "<group>"; };
+		C2F3E3CF17BF666000542F53 /* MYSParagraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYSParagraph.h; sourceTree = "<group>"; };
+		C2F3E3D017BF666000542F53 /* MYSParagraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSParagraph.m; sourceTree = "<group>"; };
+		C2F3E3D317BF668C00542F53 /* MYSParagraph_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYSParagraph_Private.h; sourceTree = "<group>"; };
+		C2F3E3D517BF66A200542F53 /* MYSWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYSWord.h; sourceTree = "<group>"; };
+		C2F3E3D617BF66A200542F53 /* MYSWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSWord.m; sourceTree = "<group>"; };
+		C2F3E3D917BF66B700542F53 /* MYSWord_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MYSWord_Private.h; sourceTree = "<group>"; };
 		C2FA550A17B6B50700ADB392 /* MYSRunTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSRunTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,21 +171,19 @@
 				C20A29E1179A23DB008C812E /* MYSFramesetter.m */,
 				C2ED0FA417AB580B00D93D0A /* MYSTypesetter.h */,
 				C2ED0FA517AB580B00D93D0A /* MYSTypesetter.m */,
-				C28A296917B1B1ED00B2BF11 /* MYSTypesetter_Private.h */,
 				C20A29D4179A1DB1008C812E /* MYSFrame.h */,
 				C20A29D5179A1DB1008C812E /* MYSFrame.m */,
-				C236BE4C17B1D1FE004639B8 /* MYSFrame_Private.h */,
+				C2F3E3CF17BF666000542F53 /* MYSParagraph.h */,
+				C2F3E3D017BF666000542F53 /* MYSParagraph.m */,
+				C2F3E3D517BF66A200542F53 /* MYSWord.h */,
+				C2F3E3D617BF66A200542F53 /* MYSWord.m */,
 				C20A29D8179A1E6F008C812E /* MYSLine.h */,
 				C20A29D9179A1E6F008C812E /* MYSLine.m */,
-				C2F06E3217B33C9900D9AA9D /* MYSLine_Private.h */,
 				C20A29DC179A1E8D008C812E /* MYSRun.h */,
 				C20A29DD179A1E8D008C812E /* MYSRun.m */,
-				C26D560D17B5BA630007414D /* MYSRun_Private.h */,
 				C258843E17AC5E19005A6499 /* MYSGlyph.h */,
 				C258843F17AC5E19005A6499 /* MYSGlyph.m */,
-				C28FDDF117B6BCA300356850 /* MYSGlyph_Private.h */,
-				C26D560B17B5B4030007414D /* MYSPrivate.h */,
-				C28FDDF317B6C85200356850 /* MYSPrivate.m */,
+				C265394117BFC8B8004CA87C /* Private */,
 				C20A29B0179A1C80008C812E /* Supporting Files */,
 			);
 			path = MYSCoreText;
@@ -194,6 +205,7 @@
 				C26D560717B5A1F20007414D /* MYSFrameTests.m */,
 				C26D560917B5AAA30007414D /* MYSLineTests.m */,
 				C2FA550A17B6B50700ADB392 /* MYSRunTests.m */,
+				C26B358E17BC80B00031C32D /* MYSPrivateTests.m */,
 				C28FDDF517B6EBF700356850 /* MYSGlyphTests.m */,
 				C20A29C1179A1C80008C812E /* Supporting Files */,
 			);
@@ -209,6 +221,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C265394117BFC8B8004CA87C /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				C28A296917B1B1ED00B2BF11 /* MYSTypesetter_Private.h */,
+				C236BE4C17B1D1FE004639B8 /* MYSFrame_Private.h */,
+				C2F3E3D317BF668C00542F53 /* MYSParagraph_Private.h */,
+				C2F06E3217B33C9900D9AA9D /* MYSLine_Private.h */,
+				C26D560D17B5BA630007414D /* MYSRun_Private.h */,
+				C2F3E3D917BF66B700542F53 /* MYSWord_Private.h */,
+				C28FDDF117B6BCA300356850 /* MYSGlyph_Private.h */,
+				C26D560B17B5B4030007414D /* MYSPrivate.h */,
+				C28FDDF317B6C85200356850 /* MYSPrivate.m */,
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -220,11 +248,14 @@
 				C28FDDF217B6BCA300356850 /* MYSGlyph_Private.h in Headers */,
 				C258844017AC5E19005A6499 /* MYSGlyph.h in Headers */,
 				C2F06E3317B33C9900D9AA9D /* MYSLine_Private.h in Headers */,
+				C2F3E3D717BF66A200542F53 /* MYSWord.h in Headers */,
 				C20A29DE179A1E8D008C812E /* MYSRun.h in Headers */,
 				C26D560C17B5B4030007414D /* MYSPrivate.h in Headers */,
 				C20A29E2179A23DB008C812E /* MYSFramesetter.h in Headers */,
 				C2ED0FA617AB580B00D93D0A /* MYSTypesetter.h in Headers */,
 				C236BE4D17B1D1FE004639B8 /* MYSFrame_Private.h in Headers */,
+				C2F3E3D417BF668C00542F53 /* MYSParagraph_Private.h in Headers */,
+				C2F3E3D117BF666000542F53 /* MYSParagraph.h in Headers */,
 				C20A29D6179A1DB1008C812E /* MYSFrame.h in Headers */,
 				C20A29DA179A1E6F008C812E /* MYSLine.h in Headers */,
 				C26D560E17B5BA690007414D /* MYSRun_Private.h in Headers */,
@@ -313,12 +344,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F3E3D217BF666000542F53 /* MYSParagraph.m in Sources */,
 				C20A29DF179A1E8D008C812E /* MYSRun.m in Sources */,
 				C20A29DB179A1E6F008C812E /* MYSLine.m in Sources */,
 				C28FDDF417B6C85200356850 /* MYSPrivate.m in Sources */,
 				C2ED0FA717AB580B00D93D0A /* MYSTypesetter.m in Sources */,
 				C20A29E3179A23DB008C812E /* MYSFramesetter.m in Sources */,
 				C258844117AC5E19005A6499 /* MYSGlyph.m in Sources */,
+				C2F3E3D817BF66A200542F53 /* MYSWord.m in Sources */,
 				C20A29D7179A1DB1008C812E /* MYSFrame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26B358F17BC80B00031C32D /* MYSPrivateTests.m in Sources */,
 				C236BE5417B1EECF004639B8 /* MYSTypesetterTests.m in Sources */,
 				C26D560A17B5AAA30007414D /* MYSLineTests.m in Sources */,
 				C28FDDF617B6EBF700356850 /* MYSGlyphTests.m in Sources */,

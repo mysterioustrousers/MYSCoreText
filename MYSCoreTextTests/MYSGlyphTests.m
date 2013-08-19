@@ -11,7 +11,11 @@
 
 
 @interface MYSGlyphTests : XCTestCase
-@property (nonatomic, strong) MYSGlyph *glyph;
+@property (nonatomic, strong) MYSFramesetter *framesetter;
+@property (nonatomic, strong) MYSFrame       *frame;
+@property (nonatomic, strong) MYSLine        *line;
+@property (nonatomic, strong) MYSRun         *glyphRun;
+@property (nonatomic, strong) MYSGlyph       *glyph;
 @end
 
 
@@ -24,11 +28,11 @@
                         @"that wrap and also some hard \nline breaks that will generate lines for us "
                         @"in a frame");
     NSAttributedString *attributedString    = [[NSAttributedString alloc] initWithString:string];
-    MYSFramesetter *framesetter             = [[MYSFramesetter alloc] initWithAttributedString:attributedString];
-    MYSFrame *frame                         = [framesetter frameWithRect:CGRectMake(10, 0, 100, 100)];
-    MYSLine *line                           = frame.lines[0];
-    MYSRun *run                             = line.runs[0];
-    _glyph                                  = run.glyphs[2];
+    _framesetter    = [[MYSFramesetter alloc] initWithAttributedString:attributedString];
+    _frame          = [_framesetter frameWithRect:CGRectMake(10, 0, 100, 100)];
+    _line           = _frame.lines[0];
+    _glyphRun       = _line.runs[0];
+    _glyph          = _glyphRun.glyphs[2];
 }
 
 
@@ -74,15 +78,15 @@
 - (void)testBoundingBox
 {
     CGRect bb = _glyph.boundingBox;
-    XCTAssertEqualWithAccuracy(bb.origin.x, 1.058, 0.01);
-    XCTAssertEqualWithAccuracy(bb.origin.y, 0, 0.01);
-    XCTAssertEqualWithAccuracy(bb.size.width, 1.058, 0.01);
-    XCTAssertEqualWithAccuracy(bb.size.height, 8.480, 0.01);
+    XCTAssertEqualWithAccuracy(bb.origin.x, 10.68, 0.01);
+    XCTAssertEqualWithAccuracy(bb.origin.y, 85.24, 0.01);
+    XCTAssertEqualWithAccuracy(bb.size.width, 2.666, 0.01);
+    XCTAssertEqualWithAccuracy(bb.size.height, 14.759, 0.01);
 }
 
 - (void)testPath
 {
-    CGPathRef path = _glyph.path;
+    CGPathRef path = [_glyph createPathOfGlyph];
     CGRect bb = CGPathGetPathBoundingBox(path);
     XCTAssertEqualWithAccuracy(bb.origin.x, 1.058, 0.01);
     XCTAssertEqualWithAccuracy(bb.origin.y, 0, 0.01);

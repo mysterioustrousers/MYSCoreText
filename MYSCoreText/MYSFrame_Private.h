@@ -9,5 +9,6 @@
 #import "MYSFrame.h"
 
 @interface MYSFrame ()
+@property (nonatomic, assign, readwrite) MYSFramesetter *framesetter;
 - (id)initWithCTFrame:(CTFrameRef)frame attributedString:(NSAttributedString *)attributedString;
 @end

@@ -6,9 +6,8 @@
 //  Copyright (c) 2013 Mysterious Trousers. All rights reserved.
 //
 
-#import "MYSFrame.h"
 #import "MYSFramesetter.h"
-#import "MYSTypesetter.h"
+#import "MYSFrame_Private.h"
 #import "MYSTypesetter_Private.h"
 #import "MYSFrame_Private.h"
 #import "MYSPrivate.h"
@@ -21,6 +20,10 @@
 
 
 @implementation MYSFramesetter
+
+
+
+#pragma mark - Creating A Framesetter
 
 - (id)initWithAttributedString:(NSAttributedString *)attributedString
 {
@@ -50,10 +53,16 @@
         if (!_typesetter) {
             _typesetter = [[MYSTypesetter alloc] initWithCTTypesetter:CTFramesetterGetTypesetter(_framesetterRef)
                                                      attributedString:_attributedString];
+            _typesetter.framesetter = self;
         }
         return _typesetter;
     }
 }
+
+
+
+
+#pragma mark - Creating Frames
 
 - (MYSFrame *)frameWithRange:(NSRange)range path:(CGPathRef)path
 {
@@ -61,6 +70,7 @@
     CTFrameRef frameRef     = CTFramesetterCreateFrame(_framesetterRef, rangeRef, path, NULL);
     MYSFrame *frame         = [[MYSFrame alloc] initWithCTFrame:frameRef
                                                attributedString:_attributedString];
+    frame.framesetter       = self;
     MYSCFSafeRelease(frameRef);
     return frame;
 }
@@ -70,9 +80,15 @@
     NSRange range       = NSMakeRange(0, [_attributedString length]);
     CGPathRef pathRef   = CGPathCreateWithRect(rect, NULL);
     MYSFrame *frame     = [self frameWithRange:range path:pathRef];
+    frame.framesetter   = self;
     MYSCFSafeRelease(pathRef);
     return frame;
 }
+
+
+
+
+#pragma mark - Geometry
 
 - (CGSize)suggestedSizeConstrainedToWidth:(CGFloat)width
 {
@@ -101,9 +117,19 @@
     return MYSNSRangeBridge(fitRange);
 }
 
+
+
+
+#pragma mark - Private
+
 - (void)dealloc
 {
     MYSCFSafeRelease(_framesetterRef);
+}
+
+- (NSString *)description
+{
+    return [_attributedString string];
 }
 
 

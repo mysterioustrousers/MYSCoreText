@@ -9,6 +9,7 @@
 #import "MYSRun.h"
 
 @interface MYSRun ()
-@property (nonatomic, copy, readwrite) NSArray *glyphs;
+@property (nonatomic, assign, readwrite) MYSLine *line;
+@property (nonatomic, copy,   readwrite) NSArray *glyphs;
 - (id)initWithCTRun:(CTRunRef)runRef attributedString:(NSAttributedString *)attributedString;
 @end

@@ -9,6 +9,8 @@
 #import "MYSFramesetter.h"
 #import "MYSTypesetter.h"
 #import "MYSFrame.h"
+#import "MYSParagraph.h"
 #import "MYSLine.h"
 #import "MYSRun.h"
+#import "MYSWord.h"
 #import "MYSGlyph.h"

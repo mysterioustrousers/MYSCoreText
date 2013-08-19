@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Mysterious Trousers. All rights reserved.
 //
 
+
 @class MYSFrame;
 @class MYSTypesetter;
 
@@ -71,7 +72,7 @@
 
 
 ///---------------------------------------
-/// @name Getting Suggested Frame Sizes
+/// @name Geometry
 ///---------------------------------------
 
 /**
@@ -106,12 +107,6 @@
  *    @return The smallest size the text would fit in.
  */
 - (CGSize)suggestedSizeOfRange:(NSRange)range constrainedToSize:(CGSize)size;
-
-
-
-///---------------------------------------
-/// @name Range Calculations
-///---------------------------------------
 
 /**
  *    The range that actually fits in a frame of `size`.

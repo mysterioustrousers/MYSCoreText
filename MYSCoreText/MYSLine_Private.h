@@ -9,6 +9,7 @@
 #import "MYSLine.h"
 
 @interface MYSLine ()
+@property (nonatomic, assign, readwrite) MYSFrame           *frame;
 @property (nonatomic, copy,   readwrite) NSAttributedString *attributedString;
 @property (nonatomic, assign, readwrite) CGPoint            origin;                 // TODO: use CTLineGetPenOffsetForFlush?
 - (id)initWithCTLine:(CTLineRef)lineRef attributedString:(NSAttributedString *)attributedString;

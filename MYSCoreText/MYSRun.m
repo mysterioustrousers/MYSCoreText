@@ -6,11 +6,9 @@
 //  Copyright (c) 2013 Mysterious Trousers. All rights reserved.
 //
 
-#import "MYSRun.h"
 #import "MYSRun_Private.h"
-#import "MYSPrivate.h"
-#import "MYSGlyph.h"
 #import "MYSGlyph_Private.h"
+#import "MYSPrivate.h"
 
 
 @interface MYSRun ()
@@ -23,7 +21,7 @@
 @implementation MYSRun
 
 
-#pragma mark - Working With Text
+#pragma mark - Text
 
 - (NSAttributedString *)attributedString
 {
@@ -62,20 +60,20 @@
 {
     @synchronized(self) {
         if (!_glyphs) {
-            NSMutableArray *glyphs  = [NSMutableArray new];
+            _glyphs  = [NSMutableArray new];
             NSUInteger glyphCount   = CTRunGetGlyphCount(_runRef);
-            CGGlyph *glyphRefs      = malloc(sizeof(CGGlyph) * glyphCount);
-            CTRunGetGlyphs(_runRef, CFRangeMake(0, glyphCount - 1), glyphRefs);
 
-            NSUInteger charCount    = CTRunGetStringRange(_runRef).length;
-            CFIndex *indices        = malloc(sizeof(CFIndex) * charCount);
-            CTRunGetStringIndices(_runRef, CTRunGetStringRange(_runRef), indices);
+            CGGlyph glyphRefs[glyphCount];
+            CTRunGetGlyphs(_runRef, CFRangeMake(0, glyphCount), glyphRefs);
 
-            CGPoint *positions      = malloc(sizeof(CGPoint) * glyphCount);
-            CTRunGetPositions(_runRef, CFRangeMake(0, glyphCount - 1), positions);
+            CFIndex indices[glyphCount];
+            CTRunGetStringIndices(_runRef, CFRangeMake(0, 0), indices);
 
-            CGSize *advances        = malloc(sizeof(CGSize) * glyphCount);
-            CTRunGetAdvances(_runRef, CFRangeMake(0, glyphCount - 1), advances);
+            CGPoint positions[glyphCount];
+            CTRunGetPositions(_runRef, CFRangeMake(0, glyphCount), positions);
+
+            CGSize advances[glyphCount];
+            CTRunGetAdvances(_runRef, CFRangeMake(0, glyphCount), advances);
 
             for (CFIndex i = 0; i < glyphCount; i++) {
                 CGGlyph glyphRef    = glyphRefs[i];
@@ -84,10 +82,14 @@
                 glyph.index         = indices[i];
                 glyph.position      = positions[i];
                 glyph.advance       = advances[i];
-                [glyphs addObject:glyph];
+                glyph.ascent        = self.ascent;
+                glyph.descent       = self.descent;
+                glyph.leading       = self.leading;
+                glyph.lineHeight    = self.lineHeight;
+                glyph.textMatrix    = self.textMatrix;
+                glyph.run           = self;
+                [(NSMutableArray *)_glyphs addObject:glyph];
             }
-
-            _glyphs = glyphs;
         }
         return _glyphs;
     }
@@ -96,7 +98,7 @@
 
 
 
-#pragma mark - Typographic Geometry
+#pragma mark - Geometry
 
 - (CGFloat)ascent
 {
@@ -182,5 +184,9 @@
     MYSCFSafeRelease(_runRef);
 }
 
+- (NSString *)description
+{
+    return [[_attributedString string] substringWithRange:self.range];
+}
 
 @end

@@ -7,11 +7,20 @@
 //
 
 
+@class MYSLine;
+
+
 @interface MYSRun : NSObject
 
 
+/**
+ *	The line that created this line if it was created by a line, otherwise is nil.
+ */
+@property (nonatomic, assign, readonly) MYSLine *line;
+
+
 ///-----------------------------
-/// Working With Text
+/// Text
 ///-----------------------------
 
 /**
@@ -56,7 +65,7 @@
 
 
 ///----------------------------
-/// Typographic Geometry
+/// Geometry
 ///----------------------------
 
 /**

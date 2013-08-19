@@ -6,7 +6,9 @@
 //  Copyright (c) 2013 Mysterious Trousers. All rights reserved.
 //
 
-#import "MYSGlyph.h"
+#import "MYSRun_Private.h"
+#import "MYSLine_Private.h"
+#import "MYSFrame_Private.h"
 #import "MYSGlyph_Private.h"
 #import "MYSPrivate.h"
 
@@ -22,7 +24,9 @@
 @implementation MYSGlyph
 
 
-#pragma mark - Working With Strings
+
+
+#pragma mark - Text
 
 - (NSAttributedString *)attributedString
 {
@@ -37,26 +41,43 @@
 
 
 
-#pragma mark - Glyph Geometry
+#pragma mark - Geometry
 
 // position     - assigned by run
 
 - (CGRect)boundingBox
 {
-    return CGPathGetPathBoundingBox(self.path);
+    CGRect r        = CGRectMake(0, 0, _advance.width, _lineHeight);
+    r.origin        = MYSConvertPointFromRect(r.origin, _run.line.boundingBox);
+    r.origin        = MYSConvertPointFromRect(r.origin, _run.line.frame.boundingBox);
+    r.origin.x      = _position.x;
+    r.origin.y     -= _descent;
+    r.size.height  += _descent;
+    return r;
 }
 
-- (CGPathRef)path
+- (CGPathRef)newPathOfGlyph;
 {
     return CTFontCreatePathForGlyph(_fontRef, _glyphRef, NULL);
 }
 
 // advance      - assigned by run
 
+// ascent       - assigned by run
+
+// descent      - assigned by run
+
+// leading      - assigned by run
+
+// lineHeight   - assigned by run
+
+// textMatrix   - assigned by run
 
 
 
-#pragma mark - Getting Glyph Information
+
+
+#pragma mark - Glyph Information
 
 - (NSString *)name
 {
@@ -100,6 +121,7 @@
         if (attributesRef && CFDictionaryContainsKey(attributesRef, kCTFontAttributeName)) {
             CTFontDescriptorRef fontDescriptorRef = CTFontDescriptorCreateWithAttributes(attributesRef);
             _fontRef = CTFontCreateWithFontDescriptor(fontDescriptorRef, 0.0, NULL);
+            MYSCFSafeRelease(fontDescriptorRef);
         }
         else {
             _fontRef = CTFontCreateUIFontForLanguage(kCTFontSmallSystemFontType, 0, NULL);
@@ -112,5 +134,9 @@
     return self;
 }
 
+- (NSString *)description
+{
+    return [self.attributedString string];
+}
 
 @end

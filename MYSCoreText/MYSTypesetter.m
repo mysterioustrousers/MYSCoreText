@@ -6,8 +6,7 @@
 //  Copyright (c) 2013 Mysterious Trousers. All rights reserved.
 //
 
-#import "MYSTypesetter.h"
-#import "MYSLine.h"
+#import "MYSTypesetter_Private.h"
 #import "MYSLine_Private.h"
 #import "MYSPrivate.h"
 
@@ -18,6 +17,10 @@
 
 
 @implementation MYSTypesetter
+
+
+
+#pragma mark - Creating Typesetters
 
 - (id)initWithAttributedString:(NSAttributedString *)attributedString
 {
@@ -58,7 +61,7 @@
 
 
 
-#pragma mark - Suggested Line Breaks
+#pragma mark - Breaking Lines
 
 - (NSInteger)suggestedLineBreakIndexWithStartIndex:(NSInteger)startIndex width:(CGFloat)width
 {
@@ -69,11 +72,6 @@
 {
     return CTTypesetterSuggestLineBreakWithOffset(_typesetterRef, startIndex, width, offset);
 }
-
-
-
-
-#pragma mark - Suggested Cluster Breaks
 
 - (NSInteger)suggestedClusterBreakIndexWithStartIndex:(NSInteger)startIndex width:(CGFloat)width
 {

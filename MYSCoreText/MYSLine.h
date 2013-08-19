@@ -6,11 +6,20 @@
 //  Copyright (c) 2013 Mysterious Trousers. All rights reserved.
 //
 
+
+@class MYSFrame;
 @class MYSRun;
+@class MYSWord;
+@class MYSGlyph;
 
 
 @interface MYSLine : NSObject
 
+
+/**
+ *	The frame that created this line if it was created by a frame, otherwise nil.
+ */
+@property (nonatomic, assign, readonly) MYSFrame *frame;
 
 
 
@@ -39,14 +48,13 @@
  *
  *	@return A new line that is truncated to `width` using `truncationType` method.
  */
-// TODO: use U+2026 as truncation token
 - (MYSLine *)newTruncatedLineToWidth:(CGFloat)width truncationType:(CTLineTruncationType)truncationType;
 
 /**
  *	Returns a new copy of the line that is justified.
  *
  *	@param	width	
-                The width to justify the line to.
+ *              The width to justify the line to.
  *
  *	@return	A new line that is justified to `width`.
  */
@@ -75,6 +83,20 @@
  */
 @property (nonatomic, assign, readonly) NSRange range;
 
+/**
+ *	The index in the original that string spawned this line of the first character in the line.
+ *
+ *	@return	The index in the original string that spawned this line of the first character in the line.
+ */
+- (NSUInteger)indexOfFirstCharacter;
+
+/**
+ *	The index in the original string that spawned this line of the last character in the line.
+ *
+ *	@return	The index in the original string that spawned this line of the last character in the line.
+ */
+- (NSUInteger)indexOfLastCharacter;
+
 
 
 
@@ -91,6 +113,27 @@
 
 
 ///-----------------------------------
+/// Words
+///-----------------------------------
+
+/**
+ *	An array of the MYSWord objects that represent the words (according to locale) in this line.
+ */
+@property (nonatomic, strong, readonly) NSArray *words;
+
+/**
+ *	The word that contains `index`.
+ *
+ *	@param	index	The index that is within the word you want returned.
+ *
+ *	@return	The word that contains `index`.
+ */
+- (MYSWord *)wordContainingIndex:(NSUInteger)index;
+
+
+
+
+///-----------------------------------
 /// Glyphs
 ///-----------------------------------
 
@@ -99,11 +142,20 @@
  */
 @property (nonatomic, strong, readonly) NSArray *glyphs;
 
+/**
+ *	Two glyphs could share teh same index, so this looks for the first glyph with the `index`
+ *
+ *	@param	index	The character index to use to map and find the glyph.
+ *
+ *	@return	The glyph that maps to the character at `index`.
+ */
+- (MYSGlyph *)glyphAtCharacterIndex:(NSUInteger)index;
+
 
 
 
 ///-----------------------------------
-/// Typographical Bounds
+/// Geometry
 ///-----------------------------------
 
 /**
@@ -142,6 +194,11 @@
 @property (nonatomic, assign, readonly) CGFloat lineHeight;
 
 /**
+ *	The bounding box of this line with 0 for options.
+ */
+@property (nonatomic, assign, readonly) CGRect boundingBox;
+
+/**
  *	Calculates the bounds of a lines modified by the options.
  *
  *	@param	options	
@@ -150,13 +207,6 @@
  *	@return	The bounds of the line given `options`.
  */
 - (CGRect)boundsWithOptions:(CTLineBoundsOptions)options;
-
-
-
-
-///---------------------------------
-/// Character Positions
-///---------------------------------
 
 /**
  *	The graphical offset (from the left or right depending on writing direction) of the character at `index`.
@@ -176,7 +226,11 @@
  *
  *	@return	The index of the character located at `point`.
  */
-- (NSUInteger)indexOfCharacterAtPosition:(CGPoint)point;
+- (NSUInteger)characterIndexAtPoint:(CGPoint)point;
+
+
+
+
 
 
 

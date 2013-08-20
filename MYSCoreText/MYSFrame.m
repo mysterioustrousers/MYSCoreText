@@ -95,6 +95,32 @@
     return closest;
 }
 
+- (MYSParagraph *)paragraphBeforeIndex:(NSUInteger)index
+{
+    MYSParagraph *candidate = [self.paragraphs count] > 0 ? self.paragraphs[0] : nil;
+    for (MYSParagraph *paragraph in self.paragraphs) {
+        if (MYSNSRangeStartIndex(paragraph.range) < index &&
+            MYSIndexDistanceToRange(index, paragraph.range) < MYSIndexDistanceToRange(index, candidate.range))
+        {
+            candidate = paragraph;
+        }
+    }
+    return candidate;
+}
+
+- (MYSParagraph *)paragraphAfterIndex:(NSUInteger)index
+{
+    MYSParagraph *candidate = [self.paragraphs lastObject];
+    for (MYSParagraph *paragraph in self.paragraphs) {
+        if (MYSNSRangeEndIndex(paragraph.range) > index &&
+            MYSIndexDistanceToRange(index, paragraph.range) < MYSIndexDistanceToRange(index, candidate.range))
+        {
+            candidate = paragraph;
+        }
+    }
+    return candidate;
+}
+
 
 
 

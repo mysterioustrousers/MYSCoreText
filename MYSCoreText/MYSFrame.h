@@ -70,6 +70,17 @@
  */
 - (MYSParagraph *)paragraphContainingIndex:(NSUInteger)index;
 
+/**
+ *	The paragraph that either contains `index` or is right before `index` if `index` is at the beginning of the paragraph.
+ */
+- (MYSParagraph *)paragraphBeforeIndex:(NSUInteger)index;
+
+/**
+ *	The paragraph that either contains `index` or is right before `index` if `index` is at the beginning of the word.
+ */
+- (MYSParagraph *)paragraphAfterIndex:(NSUInteger)index;
+
+
 
 
 
@@ -126,12 +137,12 @@
 - (MYSWord *)wordContainingIndex:(NSUInteger)index;
 
 /**
- *	The word that either contains `index` or is right before `index`.
+ *	The word that either contains `index` or is right before `index` if `index` is at the beginning of the word.
  */
 - (MYSWord *)wordBeforeIndex:(NSUInteger)index;
 
 /**
- *	The word that either contains `index` or is right after `index`.
+ *	The word that either contains `index` or is right after `index` if `index` is at the very end of the word.
  */
 - (MYSWord *)wordAfterIndex:(NSUInteger)index;
 

@@ -288,7 +288,7 @@
     point = MYSPointDefinitelyInsideRect(point, self.boundingBox);
     for (MYSLine *line in self.lines) {
         CGRect r = CGRectInset(line.boundingBox, -1, -1);
-        r.size.width = self.boundingBox.size.width;
+        r.size.width = self.boundingBox.size.width + 2;
         if (CGRectContainsPoint(r, point)) {
             return line;
         }
@@ -312,7 +312,14 @@
 {
     point = MYSPointDefinitelyInsideRect(point, self.boundingBox);
     MYSLine *line = [self lineContainingPoint:point];
-    return [line characterIndexAtPoint:point];
+    NSUInteger index = [line characterIndexAtPoint:point];
+    // to make sure the point is within a line, there is a buffer, which causes indexes to
+    // be off by one when a period at the end of the whole string is involved.
+    if (index == [_attributedString length] - 1 &&
+        [[_attributedString string] characterAtIndex:index] == '.') {
+        index++;
+    }
+    return index;
 }
 
 - (CGPoint)pointOfCharacterAtIndex:(NSUInteger)index

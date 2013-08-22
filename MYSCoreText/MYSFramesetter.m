@@ -29,8 +29,7 @@
 {
     self = [super init];
     if (self) {
-        _attributedString   = attributedString;
-        _framesetterRef     = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)(_attributedString));
+        self.attributedString = attributedString;
     }
     return self;
 }
@@ -43,7 +42,8 @@
 - (void)setAttributedString:(NSMutableAttributedString *)attributedString
 {
     MYSCFSafeRelease(_framesetterRef);
-    _attributedString   = [attributedString copy];
+
+    _attributedString   = attributedString;
     _framesetterRef     = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)(_attributedString));
 }
 

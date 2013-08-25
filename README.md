@@ -5,13 +5,10 @@ An Objective-C wrapper around Apple's Core Text framework.
 
 ### Installation
 
-1. Clone this repo [somewhere]
-2. In your Podfile, add this line:
+In your Podfile, add this line:
 ```
 pod "MYSCoreText"
 ```
-
-pod? => https://github.com/CocoaPods/CocoaPods/
 
 ### Example Usage
 

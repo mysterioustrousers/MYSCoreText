@@ -224,8 +224,10 @@
     CGRect horizontalBounds     = CTLineGetBoundsWithOptions(_lineRef, kCTLineBoundsUseGlyphPathBounds);
     CGRect verticalBounds       = CTLineGetBoundsWithOptions(_lineRef, kCTLineBoundsUseOpticalBounds);
 
+
+
     CGRect bounds               = CGRectZero;
-    bounds.size.width           = horizontalBounds.size.width;
+    bounds.size.width           = horizontalBounds.origin.x + horizontalBounds.size.width;
     bounds.size.height          = verticalBounds.size.height + 1;
     bounds.origin               = self.origin;
     bounds.origin.y            -= self.descent;
